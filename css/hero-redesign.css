@@ -1,0 +1,91 @@
+/* ==================================================================
+ * hero-redesign.css
+ * ------------------------------------------------------------------
+ * Purpose: (1) Fix the hero (.joy-hero-09) so it renders exactly like
+ *              the approved reference — the template ships the real
+ *              H1 ("Building the energy of tomorrow.") hidden
+ *              (opacity:0/visibility:hidden) for an SVG animation
+ *              that isn't wired up in this build, so the paragraph
+ *              already used as the on-screen headline ("An
+ *              integrated energy company") is simply given proper
+ *              hero-headline typography here. No text/markup is
+ *              changed, no other visual elements are added.
+ *          (2) Enlarge + full-width the "CONVALT ENERGY" footer
+ *              statement (.joy-footer__text-wrap).
+ * Loaded after style.css + loader.css, so these rules win the
+ * cascade without needing to edit the (20k line) core stylesheet.
+ * ================================================================== */
+
+/* ------------------------------------------------------------------
+ * 01. Hero headline (the first <p>, inline-styled font-size:28px in
+ *     index.html) — promoted to the real hero headline size/weight.
+ *     The H1 stays exactly as the core stylesheet already renders it
+ *     (hidden), matching the reference image 1:1.
+ * ------------------------------------------------------------------ */
+.hero-09-headline__title p:first-of-type{
+  font-family: var(--_font-accent) !important;
+  font-weight: var(--fw-semibold);
+  font-size: clamp(2.8rem, 5.4vw, 6.4rem) !important;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--t-bright);
+  margin-bottom: 1.6rem;
+  max-width: 16ch;
+}
+
+/* ------------------------------------------------------------------
+ * 02. Hero description (the second <p>) — keep the theme's default
+ *     paragraph size/color, just constrain the width so it wraps the
+ *     same way as the reference.
+ * ------------------------------------------------------------------ */
+.hero-09-headline__title p:last-of-type{
+  max-width: 60rem;
+}
+/* ==================================================================
+ * 07. Footer — "CONVALT ENERGY" full-width statement
+ * Requirement: bigger, full width, ~50px tall line, 1280px wide
+ * container.
+ * ================================================================== */
+.joy-footer__text-wrap{
+  width: 100%;
+}
+
+.joy-footer__fullwidth-text.personal{
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.joy-footer__fullwidth-text.personal p{
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  font-family: var(--_font-accent);
+  font-weight: var(--fw-bold);
+  font-size: 50px;
+  line-height: 50px;
+  letter-spacing: -.02em;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--t-bright);
+}
+
+@media only screen and (min-width: 768px){
+  .joy-footer__fullwidth-text.personal{
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media only screen and (min-width: 1600px){
+  .joy-footer__fullwidth-text.personal{
+    padding-left: 9rem;
+    padding-right: 9rem;
+  }
+}
